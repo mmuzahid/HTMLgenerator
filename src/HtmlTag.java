@@ -77,7 +77,15 @@ public class HtmlTag {
 	}
 
 	private String getParentIndentSpace() {
-		return  "";
+		StringBuilder parentIndentSpace = new StringBuilder("");
+		
+		if (isFormatted()) {
+			parentIndentSpace.append(NEW_LINE);
+			for (int i = 0; i < level; i++){
+				parentIndentSpace.append(INDENT_SPACE);
+			}
+		}
+		return parentIndentSpace.toString();
 	}
 
 	public boolean isFormatted() {
