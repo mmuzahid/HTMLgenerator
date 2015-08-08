@@ -13,6 +13,16 @@ import java.util.Map.Entry;
 
 public class HtmlTag {
 	
+	private static final String NEW_LINE = "\n";
+	private static final String INDENT_SPACE = "\t";
+	private static final String SPACE = " ";
+	private static final String EQUALS = "=";
+	private static final String DOUBLE_QT = "\"";
+	private static final String GREATER_THAN = ">";
+	private static final String LESS_THAN = "<";
+	private static final String SLASH = "/";
+
+	
 	private int level;
 	private String tagName;
 	private Map<String, String> tagAttributes;
