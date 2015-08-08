@@ -22,7 +22,6 @@ public class HtmlTag {
 	private static final String LESS_THAN = "<";
 	private static final String SLASH = "/";
 
-	
 	private int level;
 	private String tagName;
 	private Map<String, String> tagAttributes;
@@ -77,6 +76,10 @@ public class HtmlTag {
 		tag.setParentTag(this);
 	}
 
+	private String getParentIndentSpace() {
+		return  "";
+	}
+
 	public boolean isFormatted() {
 		return isFormatted;
 	}
@@ -88,5 +91,47 @@ public class HtmlTag {
 		}
 	}
 
-	
+	public String toString() {
+		StringBuilder tag = new StringBuilder();
+		String parentIndentSpace = getParentIndentSpace();
+		
+		tag.append(parentIndentSpace);
+		tag.append(LESS_THAN);
+		tag.append(tagName);
+		
+		for (Entry<String, String> e : tagAttributes.entrySet()) {
+			tag.append(SPACE);
+			tag.append(e.getKey());
+			tag.append(EQUALS);
+			tag.append(DOUBLE_QT);
+			tag.append(e.getValue());
+			tag.append(DOUBLE_QT);
+		}
+
+		if (isPairedTag) {
+			tag.append(GREATER_THAN);
+			if (!content.isEmpty()) {
+				tag.append(parentIndentSpace);
+				tag.append(INDENT_SPACE);
+				tag.append(content);
+			}
+			for (HtmlTag childTag : childTagList) {
+				tag.append(childTag);
+			}
+			
+			tag.append(parentIndentSpace);
+			tag.append(LESS_THAN);
+			tag.append(SLASH);
+			tag.append(tagName);
+			tag.append(GREATER_THAN);
+			
+		}	
+		else {
+			tag.append(SPACE);
+			tag.append(SLASH);
+			tag.append(GREATER_THAN);
+		}
+		return tag.toString();
+	}
+
 }
