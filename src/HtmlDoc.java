@@ -40,7 +40,20 @@ public class HtmlDoc {
 		return addBodyTag(tag);
 	}
 
+	public String toString() {
+		StringBuilder html = new StringBuilder();
+		html.append(docType);
+		htmlTag.setFormatted(true);//default HTML will be formatted
+		html.append(htmlTag);
+		return html.toString();
+	}
+	
 	public String toUnformattedString() {
-		return "";
+		StringBuilder html = new StringBuilder();
+		html.append(docType);
+		htmlTag.setFormatted(false);
+		html.append(htmlTag);
+		return html.toString();
 	}
 }
+
