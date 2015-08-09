@@ -5,6 +5,9 @@
 * Date:              08-AUG-2015
 * */
 
+/**
+ * Object represents an HTML document
+ * */
 public class HtmlDoc {
 
 	private static final String DOC_TYPE_HTML4_01 = "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\" \"http://www.w3.org/TR/html4/loose.dtd\">";
@@ -43,7 +46,7 @@ public class HtmlDoc {
 	public String toString() {
 		StringBuilder html = new StringBuilder();
 		html.append(docType);
-		htmlTag.setFormatted(true);//default HTML will be formatted
+		htmlTag.setFormatted(true);//set 'true' when formatted DOC needed
 		html.append(htmlTag);
 		return html.toString();
 	}
